@@ -11,6 +11,7 @@ const {
 const { Boom } = require('@hapi/boom');
 const { matchRule } = require('./rules');
 const { getAiReply } = require('./ai');
+const { startQrServer, setQr, setStatus } = require('./qr-server');
 
 const AUTH_DIR = path.join(__dirname, '..', 'auth_info');
 const logger = pino({ level: 'silent' });
@@ -59,15 +60,18 @@ async function startBot() {
     if (qr) {
       console.log('Scan QR code berikut lewat WhatsApp > Linked Devices:');
       qrcode.generate(qr, { small: true });
+      setQr(qr);
     }
 
     if (connection === 'close') {
       const statusCode = new Boom(lastDisconnect?.error)?.output?.statusCode;
       const shouldReconnect = statusCode !== DisconnectReason.loggedOut;
       console.log('Koneksi terputus.', shouldReconnect ? 'Mencoba reconnect...' : 'Silakan login ulang (hapus folder auth_info).');
+      setStatus(shouldReconnect ? 'reconnecting' : 'logged_out');
       if (shouldReconnect) startBot();
     } else if (connection === 'open') {
       console.log('Bot WhatsApp Apron Kitchen tersambung dan siap menerima pesan.');
+      setStatus('connected');
     }
   });
 
@@ -81,6 +85,7 @@ async function startBot() {
   });
 }
 
+startQrServer();
 startBot().catch((err) => {
   console.error('Gagal menjalankan bot:', err);
   process.exit(1);
