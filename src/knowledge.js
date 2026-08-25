@@ -3,8 +3,9 @@
 // customer service (bot/knowledge/TEMPLATE CHAT .docx dan versi terbaru
 // bot/knowledge/TEMPLATE CHAT Update.docx), database produk resmi tim
 // (bot/knowledge/Apron_Kitchen_Product_Knowledge_Clean.xlsx), Q&A retail
-// (bot/knowledge/QNA Retail Apron Kitchen.xlsx), dan database produk lengkap 85 SKU
-// (bot/knowledge/Apron Kitchen Database Product AI.xlsm).
+// (bot/knowledge/QNA Retail Apron Kitchen.xlsx), database produk lengkap 85 SKU
+// (bot/knowledge/Apron Kitchen Database Product AI.xlsm), dan katalog + pricelist HORECA 2025
+// (bot/knowledge/CATALOG + PRICELIST.pdf).
 // Update file ini kalau ada info baru (produk, sertifikasi, kontak, dll) supaya jawaban AI tetap akurat.
 
 const APRON_KITCHEN_KNOWLEDGE = `
@@ -106,11 +107,11 @@ KATALOG PRODUK LAINNYA (di luar salad dressing)
 - Topping & Ready-to-Eat: Garlic Croutons, Italian Meatball, Italian Meat Lasagna, Mac & Cheese, Spaghetti Brûlée, dll.
 
 PRODUK BEST SELLER PER KATEGORI
-- Salad Dressing: Italian Vinaigrette.
-- Saus Masak khas Asia: Honey Garlic.
+- Overall best seller Apron Kitchen (menurut CATALOG + PRICELIST.pdf tahun 2025): Roasted Sesame Dressing — rating 4.9, 10rb+ terjual di Shopee, testimoni Ibu Riza (Craveat Resto, partner sejak 2022).
+- Saus Masak khas Asia / overall #2: Honey Garlic Sauce — rating 4.9, 1,9rb terjual di Shopee, testimoni Stefanny P (Customer Shopee).
 - Saus Masak ala Western: Pesto Sauce.
 - Mayo/Condiments untuk cocolan: Garlic Mayo.
-- Kalau pelanggan tanya "produk apa yang best seller", tanya balik dulu mereka lebih suka masak, salad dressing, atau cari condiments/cocolan untuk snacking, baru arahkan ke best seller kategori yang sesuai.
+- Kalau pelanggan tanya "produk apa yang best seller", tanya balik dulu mereka lebih suka masak, salad dressing, atau cari condiments/cocolan untuk snacking, baru arahkan ke best seller kategori yang sesuai. Kalau ditanya best seller overall/paling laris, jawab Roasted Sesame Dressing.
 
 CARA PENYIMPANAN PRODUK
 - Semua saus Apron wajib disimpan di chiller/kulkas, KECUALI: Mushroom, Pesto, Carbonara, Salted Egg, Creamy Cheese, dan Black Truffle — wajib disimpan di freezer.
@@ -932,9 +933,118 @@ PENGIRIMAN — DETAIL & KLARIFIKASI TAMBAHAN (update dari TEMPLATE CHAT Update.d
   - Yogyakarta: estimasi 2-3 hari (tarif pasti belum tersedia, cek dulu ke admin).
   - Kota lain yang belum disebutkan: jangan asal kasih estimasi harga/waktu, arahkan untuk dicek dulu ke admin.
 
+PRODUK BARU YANG DITEMUKAN DI CATALOG + PRICELIST.pdf (belum ada di database SKU sebelumnya)
+- Gulai Sauce (kategori Nusantara Sauce) — best for: Gulai Ayam, Gulai Ikan, Gulai Kambing.
+- Sushi Sauce (kategori Asian Sauce) — muncul di pricelist, belum ada detail taste profile/ingredients lebih lanjut.
+- Mashed Potatoes — best for: Grilled Steak, Grilled Chicken.
+- Instant Penang Curry Mee (sebelumnya cuma tercatat sebagai "Sachet Bumbu Penang Curry" tanpa use case) — best for: Penang Curry Mee.
+
+KATALOG B2B/HORECA 2025 — SERVING, PACKAGING & BEST PAIRING (sumber: CATALOG + PRICELIST.pdf)
+CATATAN PENTING: Katalog ini pakai skema kemasan/minimum order untuk channel HORECA/wholesale cetak yang BERBEDA dari skema
+B2B WhatsApp di TEMPLATE CHAT Update.docx (pouch 1kg, minimum 3kg/varian). Kalau customer tanya detail B2B, jangan campur dua
+angka ini — tanyakan dulu channel mana yang mereka maksud atau arahkan ke admin untuk skema yang berlaku saat ini.
+- Saus cair (semua Salad Dressing, Saus Masak Western/Asian/Nusantara, Gulai Sauce, Bumbu Dasar, Sambal, Instant
+  Laksa/Curry Mee, Bumbu Rendang Instant, Mayo, Tori Paitan Ramen Broth, Chicken Collagen Soup, Italian Meatball,
+  Mashed Potatoes): kemasan Food-Grade Spout Pouch 1000ml, minimum order 5 Liter per varian.
+- Salad Dressing: serving time <1 menit, serving size 30gr (30-35 porsi per pouch).
+- Saus Masak umumnya: serving time <5 menit, serving size 30gr (30-35 porsi), KECUALI Marinara/Pesto/Carbonara Sauce
+  60gr (15-20 porsi), dan Blackpepper Sauce 30gr (20-26 porsi).
+- Item kemasan jar/standing pouch dengan minimum order 12 pcs (bukan Liter): Garlic Herbs Butter & Truffle Herbs Butter
+  (jar 250gr), Vegan Salted Caramel Sauce (jar 200gr), Chili Crunch (jar 50gr), Steak Seasoning Rub (jar 90gr), Chicken
+  Seasoning Rub (jar 30gr), Gluten Free Pancake Mix Original & Ube Mochi Pancake Mix (220gr, serving 15 menit untuk
+  8-10 pancake), Meat Lasagna (300gr) & Mac and Cheese (280gr, keduanya standing pouch).
+- Bawang Goreng (Merah, Putih Cincang, Putih Iris): 200gr per pouch, tidak ada pairing menu spesifik.
+
+BEST PAIRING PER PRODUK (dari katalog, berguna untuk rekomendasi menu)
+- Roasted Sesame Dressing: Japanese Salad, Wakame Salad.
+- Caesar Dressing: Caesar Salad.
+- Italian Vinaigrette: Nicoise Salad, Cobb Salad, Italian Salad.
+- Spicy Ranch Dressing: Spicy Chicken Salad.
+- Honey Mustard Dressing: Chicken Cobb Salad.
+- Sweet Mango Vinaigrette: Fruit Salad.
+- Creamy Thai Dressing: Fruit Salad (versi salad tropis).
+- Thousand Island Dressing: Cobb Salad.
+- Golden Oasis Dressing: Chicken Caesar Salad.
+- Capri Basil Dressing: Mediterranean Salad.
+- Mushroom Sauce: Steak, Pasta, Katsu.
+- Black Truffle Mushroom Sauce: Steak, Pasta.
+- Marinara Sauce: Lasagna, Pizza, Spaghetti Bolognese.
+- Pesto Sauce: Pesto Spaghetti, Grilled Chicken Pesto, Creamy Pesto.
+- Carbonara Sauce: Lasagna, Creamy Spaghetti.
+- Fire Sauce: Spicy Wings, Fire Fried Noodles, Spicy Noodles.
+- Creamy Cheese Sauce: Cheese Fondue, Potato Gratin Sauce, Mac and Cheese.
+- Barbeque Sauce: BBQ Steak, BBQ Beef Ribs, Burgers.
+- Japanese Curry Sauce: Japanese Katsu Curry, Udon Curry Ramen.
+- Yakiniku Sauce: Beef Yakiniku, Chicken Yakiniku.
+- Sukiyaki Sauce: Sukiyaki bowl/seafood, Sukiyaki skewers.
+- Teriyaki Sauce: Teriyaki Beef Stir-Fry, Cumi Saus Padang, Teriyaki Chicken Stir-Fry.
+- Honey Garlic Sauce: Honey Garlic Chicken, BBQ Honey Ribs, Honey Garlic Shrimp.
+- Orange Sauce, Fish & Chicken Marinate, Kungpao Sauce: cocok untuk grilled/stir-fry chicken & rice bowl ala Asian (detail ikon di katalog kurang terbaca jelas, gunakan data SKU utama sebagai referensi lebih detail).
+- Blackpepper Sauce: Chicken Blackpepper, Beef Blackpepper Stir-fry.
+- Sweet & Sour Sauce: Sweet & Sour Chicken, Chicken Fillet Sweet & Sour, Ayam Stir-fry.
+- Padang Sauce: Udang Saus Padang, Cumi Saus Padang, Kepiting Saus Padang.
+- Saus Ayam Goreng Mentega: Ayam Goreng Mentega.
+- Gulai Sauce: Gulai Ayam, Gulai Ikan, Gulai Kambing.
+- Bumbu Rendang Instant: Rendang.
+- Sambal Hijau Ulek Pedas & Sambal Terasi Merah: gorengan dan pelengkap.
+- Instant Singapore Laksa: Singapore Laksa.
+- Instant Penang Curry Mee: Penang Curry Mee.
+- Bumbu Dasar Putih: Opor Ayam, Capcay, Gulai.
+- Bumbu Dasar Kuning: Soto, Nasi Kuning, Kare.
+- Bumbu Dasar Merah: Sambal Goreng, Rendang, Ayam Balado.
+- Garlic Mayo: Garlic Bread, Fries, Burger.
+- Cheese Mayo: Fries, Burger, Nacho Cheese.
+- Wasabi Mayo: Sushi, Fritters, Sandwich.
+- Spicy Mayo: Sandwich, Fries, Burger.
+- Mentaiko Mayo: Sushi, Mentaiko Bread, Mentaiko Pasta.
+- Tartar Mayo: Beef Tartar, Fish Tacos, Egg Salad.
+- Garlic Herbs Butter: Garlic Cream Cheese, Garlic Bread, Pastries.
+- Truffle Herbs Butter: Baked Brie, Truffle Pasta, Truffle Bread.
+- Ube Mochi Pancake & Waffle Mix: Ube Mochi Pancake.
+- Gluten Free Pancake Mix Original: Pancake.
+- Vegan Salted Caramel Sauce: Ice Cream, Cake, Pudding.
+- Chili Crunch: topping mie goreng/snack/toast.
+- Tori Paitan Ramen Base (Original/Miso/Spicy): Ramen/Miso Ramen/Spicy Ramen.
+- Italian Meatball: Spaghetti Meatball.
+- Chicken Collagen Soup: Collagen Soup.
+- Mashed Potatoes: Grilled Steak, Grilled Chicken.
+- Steak Seasoning Rub: Grilled Steak.
+- Chicken Seasoning Rub: Grilled Chicken.
+- Japanese Chicken Curry (RTE/Ayam Katsu ala Jepang), Meat Lasagna, Mac and Cheese: sesuai nama produknya (siap makan, tinggal panaskan).
+- CATATAN ARTEFAK KATALOG: halaman Salted Egg Sauce menampilkan "best for" yang identik persis dengan Teriyaki Sauce
+  (Teriyaki Beef Stir-Fry, Cumi Saus Padang, Teriyaki Chicken Stir-Fry) — ini kemungkinan besar cuma copy-paste error di
+  desain katalog, BUKAN rekomendasi resmi untuk Salted Egg. Untuk Salted Egg Sauce, tetap gunakan data SKU utama
+  (creamy, salted-egg dominant, cocok untuk chicken/shrimp/seafood/fish crispy & rice bowl).
+
+PRICELIST HORECA/GROSIR — REFERENSI DARI CATALOG + PRICELIST.pdf (BEDA DENGAN HARGA RETAIL SHOPEE, jangan disamakan
+tanpa konteks — "Harga" = harga per unit dasar ~250ml/250gr, "Harga 1L" = harga dinormalisasi per 1 liter untuk
+perbandingan bulk/HORECA)
+Salad Dressing (Harga | Harga 1L): Caesar 29.750/119.000; Roasted Sesame 26.648/106.590; Sweet Mango Vinaigrette
+28.050/112.200; Creamy Thai 28.050/112.200; Italian Vinaigrette 24.650/98.600; Spicy Ranch 29.750/119.000; Spicy Soy
+29.325/117.300; Thousand Island 29.325/117.300; Honey Mustard 29.750/119.000; Golden Oasis 35.700/142.800; Capri
+Basil 36.125/144.500.
+Western Sauce: Marinara 22.440/89.760; Barbeque 34.500/138.000; Black Truffle Mushroom 70.000/280.000; Carbonara
+30.855/123.420; Creamy Cheese 32.725/130.900; Mushroom 29.500/118.000; Pesto 56.100/224.400.
+Tori Paitan: Original 38.250/153.000; Miso 40.000/160.000; Spicy 39.100/156.400.
+Nusantara Sauce: Blackpepper 27.583/110.330; Padang 45.815/183.260; Ayam Goreng Mentega 20.570/82.280; Sweet & Sour
+20.570/82.280; Gulai 23.800/95.200; Sambal Hijau Setan 27.115/108.460; Sambal Terasi 27.115/108.460.
+Asian Sauce: Fire 32.000/128.000; Honey Garlic 28.000/112.000; Kungpao 42.000/168.000; Bulgogi 38.335/153.340; Fish &
+Chicken Marinate 20.000/80.000; Orange 24.000/96.000; Japanese Curry 46.000/184.000; Sukiyaki 23.500/94.000; Sushi
+Sauce 17.500/70.000; Teriyaki 20.103/80.410; Yakiniku 42.075/168.300; Salted Egg 39.270/157.080.
+Butter: Garlic Herbs Butter 57.800/231.200; Truffle Herbs Butter 72.250/289.000.
+Mayonnaise: Garlic Mayo 26.000/104.000; Spicy Mayo 24.500/98.000; Wasabi Mayo 27.500/110.000; Cheese Mayo
+28.000/112.000; Mentaiko Mayo 40.000/160.000; Tartar Mayo 35.000/140.000.
+Bawang Goreng: Bawang Merah Goreng 44.550/178.200; Bawang Putih Goreng Cincang 41.250/165.000; Bawang Putih Goreng
+Iris 39.000/156.000.
+Bumbu Dasar: Kuning 45.000/180.000; Merah 45.000/180.000; Putih 45.000/180.000.
+Collagen: Broth Original 68.000/272.000; Broth Soy 72.250/289.000; Broth Sukiyaki 76.500/306.000.
+Kalau customer tanya harga dan tidak jelas retail atau grosir/HORECA, tanyakan dulu kebutuhannya sebelum kasih angka —
+jangan campur harga retail Shopee dengan harga pricelist HORECA ini.
+
 KONTAK RESMI
 - WhatsApp: 0818 0889 6959 (https://wa.me/6281808896959)
 - Instagram: @Apronkitchen.official
+- Email support: pusatbahandapur@gmail.com
 - Lokasi: Jakarta, Indonesia
 `.trim();
 
