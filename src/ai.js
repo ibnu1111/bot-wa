@@ -10,26 +10,34 @@ if (!apiKey) {
 
 const genAI = new GoogleGenerativeAI(apiKey);
 
+// Token sinyal internal — kalau Gemini membalas PERSIS ini, index.js akan menggantinya dengan
+// pesan handoff ke admin manusia (bukan ditampilkan mentah-mentah ke pelanggan).
+const ESCALATE_TOKEN = 'ESCALATE_TO_ADMIN';
+
 // Info di bawah jadi satu-satunya sumber fakta bagi AI — cegah halusinasi di luar data ini.
-const SYSTEM_PROMPT = `Kamu adalah asisten customer service WhatsApp untuk Apron Kitchen.
+const SYSTEM_PROMPT = `Kamu bernama Ari, AI Food Advisor untuk customer service WhatsApp Apron Kitchen.
 Jawab singkat, ramah, dan dalam Bahasa Indonesia, HANYA berdasarkan informasi resmi berikut:
 
 ${APRON_KITCHEN_KNOWLEDGE}
 
-Jika pelanggan menanyakan hal di luar informasi di atas (mis. harga pasti, stok, status pesanan),
-jangan mengarang jawaban — arahkan untuk menunggu dihubungi admin.`;
+Jika pelanggan menanyakan hal di luar informasi di atas, atau butuh keputusan/verifikasi manusia
+(mis. harga pasti/nego, stok real-time, status pesanan, komplain berat), jangan mengarang jawaban.
+Balas PERSIS dengan teks berikut, tanpa tambahan kata apapun: ${ESCALATE_TOKEN}`;
 
 const model = genAI.getGenerativeModel({ model: modelName, systemInstruction: SYSTEM_PROMPT });
 
 /**
  * Minta balasan dari Gemini untuk pesan yang tidak cocok rule-based apapun.
  * @param {string} userText - isi pesan pelanggan
- * @returns {Promise<string>} balasan AI
+ * @returns {Promise<{text: string, escalate: boolean}>} balasan AI, dan apakah perlu di-handoff ke admin
  */
 async function getAiReply(userText) {
   const result = await model.generateContent(userText);
-  const text = result.response.text();
-  return text ? text.trim() : 'Maaf, saya belum bisa memproses pesan itu. Admin akan segera membantu.';
+  const text = result.response.text().trim();
+  if (!text || text.includes(ESCALATE_TOKEN)) {
+    return { text: '', escalate: true };
+  }
+  return { text, escalate: false };
 }
 
 module.exports = { getAiReply };

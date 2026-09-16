@@ -4,7 +4,7 @@
 const RULES = [
   {
     keywords: ['halo', 'hai', 'hello', 'hi'],
-    reply: 'Halo, terima kasih sudah menghubungi Apron Kitchen! Ada yang bisa kami bantu? 😊',
+    reply: 'Halo, saya Ari, AI Food Advisor Apron Kitchen! Ada yang bisa saya bantu? 😊',
   },
   {
     keywords: ['harga', 'price', 'list harga', 'katalog', 'pricelist'],
@@ -33,9 +33,10 @@ function matchRule(text) {
   if (!text) return null;
   const lower = text.toLowerCase();
   for (const rule of RULES) {
-    if (rule.keywords.some((kw) => lower.includes(kw))) {
-      return rule.reply;
-    }
+    // Word-boundary, bukan substring — cegah keyword pendek ('hi', dst) salah kena
+    // di tengah kata lain atau di awal pesan yang sebenarnya berisi pertanyaan sulit.
+    const matched = rule.keywords.some((kw) => new RegExp(String.raw`\b${kw}\b`, 'i').test(lower));
+    if (matched) return rule.reply;
   }
   return null;
 }
