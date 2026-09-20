@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('node:fs');
 const path = require('path');
 const pino = require('pino');
 const qrcode = require('qrcode-terminal');
@@ -158,9 +159,16 @@ async function startBot() {
     if (connection === 'close') {
       const statusCode = new Boom(lastDisconnect?.error)?.output?.statusCode;
       const shouldReconnect = statusCode !== DisconnectReason.loggedOut;
-      console.log('Koneksi terputus.', shouldReconnect ? 'Mencoba reconnect...' : 'Silakan login ulang (hapus folder auth_info).');
+      console.log('Koneksi terputus.', shouldReconnect ? 'Mencoba reconnect...' : 'Sesi logout, membuat QR baru...');
       setStatus(shouldReconnect ? 'reconnecting' : 'logged_out');
-      if (shouldReconnect) startBot();
+      if (shouldReconnect) {
+        startBot();
+      } else {
+        // Device dilepas manual dari HP (loggedOut) -> auth_info sudah tidak valid, harus dibuang
+        // supaya useMultiFileAuthState generate sesi baru & munculkan QR baru secara otomatis.
+        fs.rmSync(AUTH_DIR, { recursive: true, force: true });
+        startBot();
+      }
     } else if (connection === 'open') {
       console.log('Bot WhatsApp Apron Kitchen tersambung dan siap menerima pesan.');
       setStatus('connected');
