@@ -3,3 +3,7 @@ auth_info/
 .env
 *.log
 data/
+knowledge/*.pdf
+knowledge/*.xlsx
+knowledge/*.xlsm
+knowledge/*.docx

@@ -4,8 +4,9 @@
 // bot/knowledge/TEMPLATE CHAT Update.docx), database produk resmi tim
 // (bot/knowledge/Apron_Kitchen_Product_Knowledge_Clean.xlsx), Q&A retail
 // (bot/knowledge/QNA Retail Apron Kitchen.xlsx), database produk lengkap 85 SKU
-// (bot/knowledge/Apron Kitchen Database Product AI.xlsm), dan katalog + pricelist HORECA 2025
-// (bot/knowledge/CATALOG + PRICELIST.pdf).
+// (bot/knowledge/Apron Kitchen Database Product AI.xlsm), katalog + pricelist HORECA 2025
+// (bot/knowledge/CATALOG + PRICELIST.pdf), dan pricelist resmi terbaru 2026 per kategori
+// (bot/knowledge/APRON KITCHEN PRICELIST 2026.md — sumber harga PALING BARU, dipakai sebagai acuan utama).
 // Update file ini kalau ada info baru (produk, sertifikasi, kontak, dll) supaya jawaban AI tetap akurat.
 
 const APRON_KITCHEN_KNOWLEDGE = `
@@ -1040,6 +1041,124 @@ Bumbu Dasar: Kuning 45.000/180.000; Merah 45.000/180.000; Putih 45.000/180.000.
 Collagen: Broth Original 68.000/272.000; Broth Soy 72.250/289.000; Broth Sukiyaki 76.500/306.000.
 Kalau customer tanya harga dan tidak jelas retail atau grosir/HORECA, tanyakan dulu kebutuhannya sebelum kasih angka —
 jangan campur harga retail Shopee dengan harga pricelist HORECA ini.
+
+PRICELIST RESMI APRON KITCHEN 2026 (SUMBER PALING BARU & OTORITATIF UNTUK HARGA — dari "APRON KITCHEN PRICELIST 2026.pdf"
+yang dikirim langsung oleh owner, disalin lengkap ke bot/knowledge/APRON KITCHEN PRICELIST 2026.md. Kalau angka di
+sini beda dengan "Harga sekitar Rp..." pada database SKU di atas atau pricelist HORECA 2025, PAKAI ANGKA DI SINI.
+Struktur pricelist ini: pilih kategori dulu, baru di dalam tiap kategori ada daftar produk + harga retail WhatsApp +
+harga B2B/Horeka. Tanda "-" pada harga B2B berarti produk itu saat ini cuma dijual retail, belum ada harga
+grosir/Horeka resmi.)
+
+### KATEGORI: Saus Masak & Condiment Lainnya (Harga Retail WA | Harga B2B/Horeka)
+- Garlic Mayo: Rp30.000 | Rp114.000
+- Spicy Mayo: Rp30.000 | Rp114.000
+- Wasabi Mayo: Rp37.620 | Rp135.000
+- Cheese Mayo: Rp34.000 | Rp126.000
+- Mentaiko Mayo: Rp40.620 | Rp140.000
+- Tartar Mayo: Rp39.000 | Rp140.000
+- Fire Sauce: Rp37.620 | Rp130.000
+- Honey Garlic Sauce: Rp33.000 | Rp110.000
+- Kungpao Sauce: Rp37.620 | Rp132.000
+- Bulgogi Sauce: Rp33.000 | Rp128.000
+- Saus Marinasi Ayam dan Ikan: Rp37.620 | Rp110.000
+- Orange Sauce: Rp33.000 | Rp115.000
+- Japanese Curry Sauce: Rp37.620 | Rp135.000
+- Sukiyaki Sauce Seasoning: Rp33.000 | Rp118.000
+- Sushi Sauce: Rp37.620 | Rp135.000
+- Teriyaki Sauce: Rp33.000 | Rp110.000
+- Yakiniku Sauce: Rp37.620 | Rp130.000
+- Salted Egg Sauce: Rp33.000 | Rp142.000
+- Blackpepper Sauce: Rp37.620 | Rp125.000
+- Saus Padang: Rp38.500 | Rp130.000
+- Saus Ayam Goreng Mentega: Rp37.620 | Rp135.000
+- Sweet & Sour Sauce: Rp33.000 | Rp118.000
+- Saus Gulai: Rp37.620 | Rp130.000
+- Sambal Hijau Setan: Rp40.000 | Rp144.000
+- Sambal Terasi: Rp40.000 | Rp144.000
+- Marinara Sauce: Rp35.640 | Rp110.000
+- BBQ Sauce: Rp40.500 | Rp135.000
+- Black Truffle Mushroom Sauce: Rp82.500 | Rp205.000
+- Carbonara Sauce: Rp43.560 | Rp140.000
+- Creamy Cheese Sauce: Rp39.500 | Rp142.000
+- Mushroom Sauce: Rp37.500 | Rp135.000
+- Pesto Sauce: Rp66.000 | Rp192.000
+- Bawang Merah Goreng: Rp59.400 | Rp213.000
+- Bawang Putih Goreng Cincang: Rp55.000 | Rp198.000
+- Bawang Putih Goreng Iris: Rp46.000 | Rp165.000
+- Bumbu Dasar Kuning: Rp52.800 | Rp180.000
+- Bumbu Dasar Merah: Rp52.800 | Rp180.000
+- Bumbu Dasar Putih: Rp52.800 | Rp180.000
+- Collagen Broth Original (Hotpot/Steamboat): Rp80.000 | -
+- Collagen Broth Soy (Hotpot/Steamboat): Rp85.000 | -
+- Collagen Broth Sukiyaki (Hotpot/Steamboat): Rp90.000 | -
+- Tori Paitan Ramen Base Original: Rp49.000 | Rp155.000
+- Tori Paitan Ramen Base Miso: Rp52.000 | Rp160.000
+- Tori Paitan Ramen Base Spicy: Rp50.000 | Rp160.000
+- Garlic Herbs Butter: Rp78.000 | Rp258.000
+- Truffle Herbs Butter: Rp95.000 | Rp305.000
+- Yuzu Vinaigrette Dressing: Rp41.000 | Rp145.000 (catatan: salad dressing, tapi dikategorikan di sini sesuai pricelist resmi)
+- Uji Matcha Vinaigrette: Rp79.000 | -
+- Kyoto Matcha Sesame: Rp79.000 | -
+- Italian Meatball: Rp85.000 | -
+- Italian Meat Lasagna: Rp55.000 | -
+- Mac & Cheese: Rp53.000 | -
+- Japanese Chicken Katsu Curry: Rp55.000 | -
+- Spaghetti Bruule (Family Size): Rp275.000 | -
+- Kentang Mustofa Original/Spicy: Rp45.000 | -
+- Gluten Free Pancake Mix Original: Rp33.000 | -
+- Ube Mochi Pancake Mix Gluten Free: Rp58.800 | -
+- Chili Crunch Low Calorie: Rp48.000 | -
+- Chicken Seasoning Rub Powder: Rp45.000 | Rp385.000
+- Steak Seasoning Rub Powder: Rp45.000 | Rp385.000
+- Spicy Honey Garlic Sauce: Rp37.000 | Rp130.000
+- Honey Mustard Smoky BBQ Mayo: Rp42.000 | -
+- Sachet Bumbu Laksa Singapore 100gr: Rp29.000 | -
+- Sachet Bumbu Penang Curry Mee 100gr: Rp29.000 | -
+- Sachet Bumbu Rendang 100gr: Rp30.000 | -
+- Bawang Putih Refill: Rp23.000 | -
+- Bawang Putih Toples: Rp28.500 | -
+- Bawang Merah Refill: Rp42.900 | -
+- Bawang Merah Toples: Rp47.900 | -
+- Bawang Bombay Refill: Rp24.900 | -
+- Bawang Bombay Toples: Rp19.900 | -
+- Chicken Wings: Rp77.000 | -
+- Chuka Wakame: Rp47.900 | -
+- Mala Seasoning: Rp85.000 | -
+
+### KATEGORI: Salad & Healthy Eating (Harga Retail WA | Harga B2B/Horeka)
+- Caesar Dressing: Rp38.000 | Rp135.000
+- Roasted Sesame Dressing: Rp37.620 | Rp135.000
+- Sweet Mango Dressing: Rp39.600 | Rp135.000
+- Creamy Thai Dressing: Rp39.600 | Rp135.000
+- Italian Vinaigrette Dressing: Rp39.150 | Rp115.000
+- Spicy Ranch Dressing: Rp41.400 | Rp125.000
+- Spicy Soy Dressing: Rp39.600 | Rp125.000
+- Thousand Island Dressing: Rp41.400 | Rp135.000
+- Honey Mustard Dressing: Rp42.000 | Rp135.000
+- Golden Oasis Dressing: Rp42.000 | Rp138.000
+- Capri Basil Dressing: Rp42.500 | Rp138.500
+- Mashed Potato: Rp18.500 | -
+- Fresh Salad Pack: Rp32.000 | -
+- Fresh Salad Pack (Keju Parmesan): Rp44.000 | -
+- Fresh Salad Pack (Ayam Grill 80 gr): Rp48.000 | -
+- Fresh Salad Pack (Telur Rebus 1 pcs): Rp39.000 | -
+- Fresh Salad Pack (Beef Yakiniku 80gr): Rp52.000 | -
+- Fresh Salad Pack (Egg Mayo): Rp42.000 | -
+- Fresh Salad Pack (Garlic Croutons): Rp32.000 | -
+- Kaya Jam: Rp87.000 | -
+- Baked Garlic Croutons: Rp55.000 | -
+- Vegan Salted Caramel: Rp79.000 | -
+
+### KATEGORI: Pesanan untuk Birthday/Event (khusus pre-order acara, tidak ada harga B2B)
+- Pasta Cake: Rp368.000
+- Chicken Puff (isi 8): Rp164.000
+
+CARA JAWAB PERTANYAAN HARGA/KATALOG (berdasarkan struktur pricelist 2026 di atas)
+- Kalau customer belum sebut produk spesifik dan tanya "ada produk apa aja" / minta katalog, tanya dulu mereka
+  tertarik kategori mana: Saus Masak & Condiment, Salad & Healthy Eating, atau Pesanan Birthday/Event — baru
+  sebutkan daftar produk & harga di kategori itu (jangan langsung tembak semua 97 produk sekaligus).
+- Kalau customer sudah sebut nama produk spesifik, langsung jawab harga retail WA-nya; sebutkan harga B2B/Horeka
+  hanya kalau customer tanya soal grosir/reseller/Horeka atau harga B2B tersedia (bukan "-").
 
 KONTAK RESMI
 - WhatsApp: 0818 0889 6959 (https://wa.me/6281808896959)
